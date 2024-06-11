@@ -1,4 +1,9 @@
-import { createGameBoard, receiveAttack } from "./gameboard";
+import {
+  createGameBoard,
+  receiveAttack,
+  areAllShipsSunk,
+  missedAttacks,
+} from "./gameboard";
 
 // create the board
 const testBoard = createGameBoard();
@@ -35,7 +40,7 @@ it("doesn't affect other ships", () => {
 
 testBoard.receiveAttack([5, 5]);
 it("hits an empty square", () => {
-  expect(testBoard.board[[5, 5]]).toBe("destroyed");
+  expect(testBoard.board[[5, 5]]).toBe(null);
 });
 
 testBoard.placeShip(1, [4, 7]);
@@ -46,4 +51,25 @@ it("sinks", () => {
 
 it("hits a sunken ship", () => {
   expect(testBoard.receiveAttack([4, 7])).toBe("ship is already sunk");
+});
+
+it("displays missed attacks in an array", () => {
+  expect(testBoard.missedAttacks).toEqual([[5, 5]]);
+});
+
+it("displays false if there's at least one ship standing", () => {
+  expect(testBoard.areAllShipsSunk()).toBe(false);
+});
+
+const testBoard2 = createGameBoard();
+testBoard2.placeShip(1, [9, 9]);
+testBoard2.receiveAttack([9, 9]);
+it("displays true if all ships have been sunk", () => {
+  expect(testBoard2.areAllShipsSunk()).toBe(true);
+});
+
+
+const testBoard3 = createGameBoard()
+it("displays undefined if there are no ships in the board", () => {
+  expect(testBoard3.areAllShipsSunk()).toBe(undefined);
 });

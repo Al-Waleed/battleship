@@ -17,9 +17,11 @@ export function createGameBoard() {
     });
   };
 
+  const missedAttacks = [];
+
   const receiveAttack = (point) => {
     if (board[point] === null) {
-      board[point] = "destroyed";
+      missedAttacks.push(point);
       return board[point];
     } else if (board[point].isSunk() === true) {
       return "ship is already sunk";
@@ -27,5 +29,23 @@ export function createGameBoard() {
       board[point].hit();
     }
   };
-  return { board, placeShip, receiveAttack };
+
+  const areAllShipsSunk = () => {
+    let shipsHaveBeenSunk = undefined;
+    for (const key in board) {
+      const currentPoint = board[key];
+      // if there's at least one ship left we set shipsHaveBeenSunk to false
+      if (currentPoint !== null && currentPoint.isSunk() === false) {
+        shipsHaveBeenSunk = false;
+        // exit the function when we find one ship standing
+        return shipsHaveBeenSunk;
+      } else if (currentPoint !== null && currentPoint.isSunk() === true) {
+        // we don't return here because we want to keep checking for other ships
+        shipsHaveBeenSunk = true;
+      }
+    }
+    return shipsHaveBeenSunk;
+  };
+
+  return { board, placeShip, receiveAttack, areAllShipsSunk, missedAttacks };
 }
