@@ -14,5 +14,5 @@ export function ship(length) {
     return state.sunk;
   };
 
-  return { hit, isSunk };
+  return { hit, isSunk, state };
 }
