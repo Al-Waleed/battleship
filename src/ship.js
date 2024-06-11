@@ -6,7 +6,7 @@ export function ship(length) {
   };
 
   const hit = () => {
-    state.hits += 1;
+    if (state.sunk === false) state.hits += 1;
   };
 
   const isSunk = () => {
