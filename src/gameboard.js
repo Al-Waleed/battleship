@@ -18,14 +18,16 @@ export function createGameBoard() {
   };
 
   const missedAttacks = {};
+  const attacked = {};
 
   const receiveAttack = (point) => {
     if (board[point] === null) {
-      missedAttacks[point] = "missed"
+      missedAttacks[point] = "missed";
       return board[point];
     } else if (board[point].isSunk() === true) {
       return "ship is already sunk";
     } else {
+      attacked[point] = "attacked";
       board[point].hit();
     }
   };
@@ -47,5 +49,12 @@ export function createGameBoard() {
     return shipsHaveBeenSunk;
   };
 
-  return { board, placeShip, receiveAttack, areAllShipsSunk, missedAttacks };
+  return {
+    board,
+    placeShip,
+    receiveAttack,
+    areAllShipsSunk,
+    missedAttacks,
+    attacked,
+  };
 }

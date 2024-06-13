@@ -1,6 +1,6 @@
 import createPlayer from "./player";
 
-function displayBoard(player, board, missed) {
+function displayBoard(player, board, missed, attacked) {
   const boardDiv = document.getElementById(`player-${player}-board`);
 
   for (const square in board) {
@@ -17,6 +17,11 @@ function displayBoard(player, board, missed) {
     if (missed) {
       if (square in missed) {
         div.classList.add("missed");
+      }
+    }
+    if (attacked) {
+      if (square in attacked) {
+        div.classList.add("attacked");
       }
     }
     boardDiv.append(div);
@@ -39,11 +44,13 @@ export function updatePlayerBoard(board) {
   displayBoard(
     "one",
     playerOne.playersGameBoard.board,
-    playerOne.playersGameBoard.missedAttacks
+    playerOne.playersGameBoard.missedAttacks,
+    playerOne.playersGameBoard.attacked
   );
   displayBoard(
     "two",
     playerTwo.playersGameBoard.board,
-    playerTwo.playersGameBoard.missedAttacks
+    playerTwo.playersGameBoard.missedAttacks,
+    playerTwo.playersGameBoard.attacked
   );
 }
