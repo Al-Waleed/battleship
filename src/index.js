@@ -1,6 +1,6 @@
 import "./style.css";
 import { playerOne, playerTwo, updatePlayerBoard } from "./display";
-import { getCurrentPlayer, switchPlayer } from "./player";
+import updateListeners from "./eventListener";
 
 playerOne.playersGameBoard.placeShip(2, [5, 8], [5, 9]);
 playerOne.playersGameBoard.placeShip(3, [2, 0], [2, 1], [2, 2]);
@@ -15,3 +15,4 @@ playerTwo.playersGameBoard.placeShip(4, [9, 0], [9, 1], [9, 2], [9, 3]);
 playerTwo.playersGameBoard.placeShip(5, [6, 0], [6, 1], [6, 2], [6, 3], [6, 4]);
 
 updatePlayerBoard();
+updateListeners();
