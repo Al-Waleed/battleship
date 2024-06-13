@@ -1,6 +1,6 @@
 import createPlayer from "./player";
 
-function displayBoard(player, board) {
+function displayBoard(player, board, missed) {
   const boardDiv = document.getElementById(`player-${player}-board`);
 
   for (const square in board) {
@@ -13,6 +13,11 @@ function displayBoard(player, board) {
     } else {
       div.dataset.value = board[square];
       div.classList.add("square");
+    }
+    if (missed) {
+      if (square in missed) {
+        div.classList.add("missed");
+      }
     }
     boardDiv.append(div);
   }
@@ -31,6 +36,14 @@ export function updatePlayerBoard(board) {
   playerOneBoardDiv.innerHTML = "";
   playerTwoBoardDiv.innerHTML = "";
 
-  displayBoard("one", playerOne.playersGameBoard.board);
-  displayBoard("two", playerTwo.playersGameBoard.board);
+  displayBoard(
+    "one",
+    playerOne.playersGameBoard.board,
+    playerOne.playersGameBoard.missedAttacks
+  );
+  displayBoard(
+    "two",
+    playerTwo.playersGameBoard.board,
+    playerTwo.playersGameBoard.missedAttacks
+  );
 }
