@@ -22,7 +22,7 @@ export const playerOne = createPlayer();
 export const playerTwo = createPlayer();
 
 displayBoard("one", playerOne.playersGameBoard.board);
-displayBoard("two", playerOne.playersGameBoard.board);
+displayBoard("two", playerTwo.playersGameBoard.board);
 
 export function updatePlayerBoard(board) {
   const playerOneBoardDiv = document.getElementById(`player-one-board`);
@@ -30,6 +30,7 @@ export function updatePlayerBoard(board) {
 
   playerOneBoardDiv.innerHTML = "";
   playerTwoBoardDiv.innerHTML = "";
+
   displayBoard("one", playerOne.playersGameBoard.board);
-  displayBoard("two", playerOne.playersGameBoard.board);
+  displayBoard("two", playerTwo.playersGameBoard.board);
 }
