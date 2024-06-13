@@ -14,14 +14,21 @@ body {
   grid-template-columns: repeat(10, 1fr);
 }
 
-#display > div > div {
+.square,
+.ship {
   width: 36px;
   height: 36px;
-  color: blueviolet;
-  background-color: chartreuse;
   border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 12px;
+  cursor: crosshair;
+}
+
+.ship {
+  background-color: red;
+}
+.square {
+  background-color: chartreuse;
 }
