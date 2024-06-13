@@ -17,11 +17,11 @@ export function createGameBoard() {
     });
   };
 
-  const missedAttacks = [];
+  const missedAttacks = {};
 
   const receiveAttack = (point) => {
     if (board[point] === null) {
-      missedAttacks.push(point);
+      missedAttacks[point] = "missed"
       return board[point];
     } else if (board[point].isSunk() === true) {
       return "ship is already sunk";
