@@ -29,10 +29,10 @@ function displayBoard(player, board, missed, attacked) {
 }
 
 export const playerOne = createPlayer();
-export const playerTwo = createPlayer();
+export const computer = createPlayer();
 
 displayBoard("one", playerOne.playersGameBoard.board);
-displayBoard("two", playerTwo.playersGameBoard.board);
+displayBoard("two", computer.playersGameBoard.board);
 
 export function updatePlayerBoard(board) {
   const playerOneBoardDiv = document.getElementById(`player-one-board`);
@@ -49,8 +49,8 @@ export function updatePlayerBoard(board) {
   );
   displayBoard(
     "two",
-    playerTwo.playersGameBoard.board,
-    playerTwo.playersGameBoard.missedAttacks,
-    playerTwo.playersGameBoard.attacked
+    computer.playersGameBoard.board,
+    computer.playersGameBoard.missedAttacks,
+    computer.playersGameBoard.attacked
   );
 }

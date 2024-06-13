@@ -7,11 +7,11 @@ export default function createPlayer(player = "player") {
   return { name, playersGameBoard };
 }
 
-let currentPlayer = "playerOne";
+let currentPlayer = "computer";
 
 export function switchPlayer() {
   if (currentPlayer === "playerOne") {
-    currentPlayer = "playerTwo";
+    currentPlayer = "computer";
   } else {
     currentPlayer = "playerOne";
   }

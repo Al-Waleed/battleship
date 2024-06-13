@@ -1,4 +1,4 @@
-import { playerOne, playerTwo, updatePlayerBoard } from "./display";
+import { playerOne, computer, updatePlayerBoard } from "./display";
 import { getCurrentPlayer, switchPlayer } from "./player";
 
 
@@ -22,12 +22,12 @@ export default function updateListeners() {
         square.addEventListener("click", () => eventHandler(square, playerOne));
       }
     });
-  } else if (getCurrentPlayer() === "playerTwo") {
+  } else if (getCurrentPlayer() === "computer") {
     playerTwoSquares.forEach((square) => {
       const lastClass = square.classList[square.classList.length - 1];
       // to know if the square has been attacked or not
       if (lastClass === "ship" || lastClass === "square") {
-        square.addEventListener("click", () => eventHandler(square, playerTwo));
+        square.addEventListener("click", () => eventHandler(square, computer));
       }
     });
   }
