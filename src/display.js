@@ -17,3 +17,19 @@ function displayBoard(player, board) {
     boardDiv.append(div);
   }
 }
+
+export const playerOne = createPlayer();
+export const playerTwo = createPlayer();
+
+displayBoard("one", playerOne.playersGameBoard.board);
+displayBoard("two", playerOne.playersGameBoard.board);
+
+export function updatePlayerBoard(board) {
+  const playerOneBoardDiv = document.getElementById(`player-one-board`);
+  const playerTwoBoardDiv = document.getElementById(`player-two-board`);
+
+  playerOneBoardDiv.innerHTML = "";
+  playerTwoBoardDiv.innerHTML = "";
+  displayBoard("one", playerOne.playersGameBoard.board);
+  displayBoard("two", playerOne.playersGameBoard.board);
+}
