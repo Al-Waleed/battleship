@@ -26,10 +26,11 @@ body {
   cursor: crosshair;
 }
 
-.ship {
+#player-one-board > .ship {
   background-color: red;
 }
-.square {
+.square,
+#player-two-board > .ship {
   background-color: chartreuse;
 }
 
@@ -38,5 +39,5 @@ body {
 }
 
 .attacked{
-  background-color: black;
+  background-color: black !important
 }
